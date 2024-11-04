@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Lucas Lameira">
+  <meta name="description" content="Web application to register events and start a countdown timer">  
+  <link rel="stylesheet" href="./styles/default.css">  
+  <link rel="stylesheet" href="./styles/styles.css">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Event Timer | Add Your Favorite Event</title>
+</head>
+
+<body>
+  <div class="btn-group">
+    <button id="tooltip">
+      <!-- SVG icon -->
+    </button>
+    <button id="add-event">      
+      <!-- SVG icon -->
+    </button>        
+  </div>
+
+  <main id="container">    
+    <h1 class="title">Event Countdown</h1>    
+    <div id="timer-container"></div>
+  </main>
+  
+  <!-- Modal -->
+  <div class="modal-bg">    
+    <section id="modal">        
+      <div id="data-field">            
+        <fieldset>
+          <label for="input-event-name">
+            <legend>Event Name</legend>
+          </label>
+          <input 
+            type="text" 
+            name="input-event-name" 
+            id="input-event-name" 
+            placeholder="Enter event name"
+            min="5"
+            max="15"                      
+          >
+        </fieldset>
+
+        <div id="input-group">
+          <fieldset>        
+            <label for="input-event-date">
+              <legend>Date</legend>
+            </label>
+            <input 
+              id="input-event-date" 
+              type="date" 
+              name="input-event-date" 
+              required                           
+            >
+          </fieldset>                
+          <fieldset>
+            <label for="input-event-time">
+              <legend>Time</legend>
+            </label>
+            <input 
+              type="time" 
+              name="input-event-time" 
+              id="input-event-time"
+            >
+          </fieldset>                    
+        </div>
+      </div> 
+
+      <button id="register-btn" onclick="registerNewEvent()">
+        Event
+        <!-- SVG icon -->
+      </button> 
+
+      <span class="modal-close">
+        <!-- SVG icon -->
+      </span>  
+    </section>
+  </div>
+
+  <!-- Tooltip -->
+  <div class="tooltip-bg">
+    <section id="tooltip-content">
+      <p>
+        Click on Add Event to register the date of an event and find out how many days, hours, minutes, and seconds are left until the event date.
+      </p>
+      <span class="close">
+        <!-- SVG icon -->
+      </span>
+    </section>
+  </div>
+
+  <!-- Script Section -->
+  <script>
+    // Open modal  
+    document.querySelector('#add-event').addEventListener('click', function(){
+      document.querySelector('.modal-bg').classList.add('modal-open');
+    });
+
+    // Close modal
+    document.querySelector('.modal-close').addEventListener('click', function(){
+      document.querySelector('.modal-bg').classList.remove('modal-open');
+    });
+
+    // Tooltip open
+    document.querySelector('#tooltip').addEventListener('click', function() { 
+      document.querySelector('.tooltip-bg').classList.add('modal-open');
+    });
+
+    document.querySelector('.close').addEventListener('click', function() {
+      document.querySelector('.tooltip-bg').classList.remove('modal-open');
+    });
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
